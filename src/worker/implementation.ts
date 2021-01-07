@@ -11,12 +11,7 @@ import WorkerThreadsImplementation from "./implementation.worker_threads"
 const runningInNode = typeof process !== 'undefined' && process.arch !== 'browser' && 'pid' in process
 
 function selectNodeImplementation(): AbstractedWorkerAPI {
-  try {
-    WorkerThreadsImplementation.testImplementation()
-    return WorkerThreadsImplementation
-  } catch (error) {
     return TinyWorkerImplementation
-  }
 }
 
 export default runningInNode
