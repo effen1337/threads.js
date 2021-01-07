@@ -249,15 +249,10 @@ let implementation: ImplementationExport
 let isTinyWorker: boolean
 
 function selectWorkerImplementation(): ImplementationExport {
-  try {
-    isTinyWorker = false
-    return initWorkerThreadsWorker()
-  } catch(error) {
     // tslint:disable-next-line no-console
-    console.debug("Node worker_threads not available. Trying to fall back to tiny-worker polyfill...")
+    console.debug("[Workers initiated]")
     isTinyWorker = true
     return initTinyWorker()
-  }
 }
 
 export function getWorkerImplementation(): ImplementationExport {
